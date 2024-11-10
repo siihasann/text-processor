@@ -33,22 +33,23 @@ export default defineComponent({
 <template>
   <div class="mb-6">
     <h2 class="text-xl font-semibold mb-2">Penggantian Kata</h2>
-    <div class="flex gap-4 mb-2">
+    <!-- Add flex-wrap and responsive width -->
+    <div class="flex flex-wrap gap-4 mb-2">
       <input
         v-model="findTerm"
         type="text"
         placeholder="Kata yang akan diganti"
-        class="border rounded px-3 py-2 flex-1"
+        class="border rounded px-3 py-2 flex-1 w-full sm:w-auto"
       />
       <input
         v-model="replaceTerm"
         type="text"
         placeholder="Diganti dengan"
-        class="border rounded px-3 py-2 flex-1"
+        class="border rounded px-3 py-2 flex-1 w-full sm:w-auto"
       />
       <button
         @click="replaceText"
-        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        class="bg-green-500 text-white px-4 py-2 rounded w-full sm:w-auto hover:bg-green-600"
       >
         Ganti
       </button>
