@@ -17,7 +17,7 @@ export default defineComponent({
     Footer,
   },
   setup() {
-    const articleText = ref(articleContent) // Masukkan teks artikel lengkap di sini
+    const articleText = ref(articleContent)
 
     return {
       articleText,
@@ -27,13 +27,39 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-3xl font-bold mb-6">Text Processor</h1>
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 shadow-lg">
+      <h1 class="text-4xl font-extrabold text-center mb-2">Text Processor</h1>
+      <p class="text-center text-lg">
+        Aplikasi untuk pencarian, penggantian, dan pengurutan kata dalam teks
+      </p>
+    </header>
 
-    <ArticleDisplay :content="articleText" />
-    <TextSearch :text="articleText" />
-    <TextReplace :text="articleText" @update:text="articleText = $event" />
-    <TextSort :text="articleText" class="mb-80" />
+    <!-- Main Content -->
+    <main class="container mx-auto p-6 flex-grow grid gap-8 lg:grid-cols-2">
+      <ArticleDisplay
+        :content="articleText"
+        class="lg:col-span-2 p-4 bg-white shadow-md rounded-lg"
+      />
+
+      <TextSearch :text="articleText" class="p-4 bg-gray-50 shadow-md rounded-lg" />
+      <TextReplace
+        :text="articleText"
+        @update:text="articleText = $event"
+        class="p-4 bg-gray-50 shadow-md rounded-lg"
+      />
+      <TextSort :text="articleText" class="p-4 bg-gray-50 shadow-md rounded-lg" />
+    </main>
+
+    <!-- Footer -->
+    <Footer class="bg-gray-800 text-white py-4 text-center" />
   </div>
-  <Footer class="mt-10" />
 </template>
+
+<style scoped>
+/* Custom Style Adjustments */
+.header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+</style>
